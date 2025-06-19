@@ -30,10 +30,10 @@ namespace Unicom_TIC_Managment_System.Reposteries
                     CourseName TEXT NOT NULL
                 );
                 CREATE TABLE IF NOT EXISTS Subjects (
-                    SubjectID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
                     SubjectName TEXT NOT NULL,
-                    CourseID INTEGER,
-                    FOREIGN KEY(CourseID) REFERENCES Courses
+                    Course TEXT,
+                    FOREIGN KEY(Course) REFERENCES Courses
                 );
                 CREATE TABLE IF NOT EXISTS Students (
                     StudentID INTEGER PRIMARY KEY AUTOINCREMENT,

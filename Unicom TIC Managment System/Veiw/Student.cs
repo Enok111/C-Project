@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Unicom_TIC_Managment_System.Veiw
 {
-    public partial class Student : Form
+    public partial class StudentForm : Form
     {
-        public Student()
+        public StudentForm()
         {
             InitializeComponent();
         }

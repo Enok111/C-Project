@@ -105,6 +105,12 @@
     <Compile Include="Veiw\Student.Designer.cs">
       <DependentUpon>Student.cs</DependentUpon>
     </Compile>
+    <Compile Include="Veiw\subject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Veiw\subject.Designer.cs">
+      <DependentUpon>subject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Veiw\TimeTables.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +125,31 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Veiw\Course.resx">
+      <DependentUpon>Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Veiw\Exam.resx">
+      <DependentUpon>Exam.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Veiw\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Veiw\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Veiw\Marks.resx">
+      <DependentUpon>Marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Veiw\Student.resx">
+      <DependentUpon>Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Veiw\subject.resx">
+      <DependentUpon>subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Veiw\TimeTables.resx">
+      <DependentUpon>TimeTables.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -140,7 +165,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Login-Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\R.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7ae39aa9d6c0ec77dc631b1840afb8a33d3d11b4r1-2048-1536v2_hq.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

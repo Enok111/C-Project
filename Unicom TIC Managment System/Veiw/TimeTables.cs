@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Unicom_TIC_Managment_System.Veiw
 {
-    public partial class TimeTables : Form
+    public partial class TimeTablesform : Form
     {
-        public TimeTables()
+        public TimeTablesform()
         {
             InitializeComponent();
         }

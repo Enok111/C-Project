@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Unicom_TIC_Managment_System.Veiw
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace Unicom_TIC_Managment_System.Veiw
 
             // Hardcoded credentials
             string validUsername = "admin";
-            string validPassword = "12345";
+            string validPassword = "admin12345";
 
             if (username == validUsername && password == validPassword)
             {
@@ -59,6 +59,16 @@ namespace Unicom_TIC_Managment_System.Veiw
                 //    userNameTxt.Focus();
                 //}
             }
+
+        }
+
+        private void userNameTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -20,7 +20,7 @@ namespace Unicom_TIC_Managment_System
             DatabaseManager.CreateTables();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login ());
+            Application.Run(new LoginForm ());
         }
     }
 }
