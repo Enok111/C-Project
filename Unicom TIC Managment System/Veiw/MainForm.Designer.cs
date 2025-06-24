@@ -43,9 +43,10 @@
             // butcs
             // 
             this.butcs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butcs.Location = new System.Drawing.Point(80, 135);
+            this.butcs.Location = new System.Drawing.Point(107, 166);
+            this.butcs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butcs.Name = "butcs";
-            this.butcs.Size = new System.Drawing.Size(179, 23);
+            this.butcs.Size = new System.Drawing.Size(239, 28);
             this.butcs.TabIndex = 0;
             this.butcs.Text = "MANAGE COURSES";
             this.butcs.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             // btnst
             // 
             this.btnst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnst.Location = new System.Drawing.Point(304, 135);
+            this.btnst.Location = new System.Drawing.Point(405, 166);
+            this.btnst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnst.Name = "btnst";
-            this.btnst.Size = new System.Drawing.Size(174, 23);
+            this.btnst.Size = new System.Drawing.Size(232, 28);
             this.btnst.TabIndex = 1;
             this.btnst.Text = "MANAGE STUDENTS";
             this.btnst.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@
             // btnsub
             // 
             this.btnsub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsub.Location = new System.Drawing.Point(526, 135);
+            this.btnsub.Location = new System.Drawing.Point(701, 166);
+            this.btnsub.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnsub.Name = "btnsub";
-            this.btnsub.Size = new System.Drawing.Size(164, 23);
+            this.btnsub.Size = new System.Drawing.Size(219, 28);
             this.btnsub.TabIndex = 2;
             this.btnsub.Text = "MANAGE SUBJECTS";
             this.btnsub.UseVisualStyleBackColor = true;
@@ -76,9 +79,10 @@
             // btnmk
             // 
             this.btnmk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmk.Location = new System.Drawing.Point(80, 228);
+            this.btnmk.Location = new System.Drawing.Point(107, 281);
+            this.btnmk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnmk.Name = "btnmk";
-            this.btnmk.Size = new System.Drawing.Size(179, 23);
+            this.btnmk.Size = new System.Drawing.Size(239, 28);
             this.btnmk.TabIndex = 3;
             this.btnmk.Text = "MANAGE MARKS";
             this.btnmk.UseVisualStyleBackColor = true;
@@ -87,9 +91,10 @@
             // btnem
             // 
             this.btnem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnem.Location = new System.Drawing.Point(304, 228);
+            this.btnem.Location = new System.Drawing.Point(405, 281);
+            this.btnem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnem.Name = "btnem";
-            this.btnem.Size = new System.Drawing.Size(174, 23);
+            this.btnem.Size = new System.Drawing.Size(232, 28);
             this.btnem.TabIndex = 4;
             this.btnem.Text = "MANAGE EXAMS";
             this.btnem.UseVisualStyleBackColor = true;
@@ -98,9 +103,10 @@
             // btntm
             // 
             this.btntm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntm.Location = new System.Drawing.Point(526, 228);
+            this.btntm.Location = new System.Drawing.Point(701, 281);
+            this.btntm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btntm.Name = "btntm";
-            this.btntm.Size = new System.Drawing.Size(164, 23);
+            this.btntm.Size = new System.Drawing.Size(219, 28);
             this.btntm.TabIndex = 5;
             this.btntm.Text = "MANAGE TIMTABLES";
             this.btntm.UseVisualStyleBackColor = true;
@@ -109,9 +115,10 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(545, 32);
+            this.button7.Location = new System.Drawing.Point(727, 39);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.Size = new System.Drawing.Size(100, 28);
             this.button7.TabIndex = 6;
             this.button7.Text = "LOG OUT";
             this.button7.UseVisualStyleBackColor = true;
@@ -123,9 +130,10 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(104, 32);
+            this.label1.Location = new System.Drawing.Point(139, 39);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 46);
+            this.label1.Size = new System.Drawing.Size(150, 56);
             this.label1.TabIndex = 7;
             this.label1.Text = "WELCOME \r\n\r\n";
             // 
@@ -137,28 +145,31 @@
             "Student",
             "Lecturer",
             "Staff"});
-            this.comboRole.Location = new System.Drawing.Point(294, 32);
+            this.comboRole.Location = new System.Drawing.Point(392, 39);
+            this.comboRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboRole.Name = "comboRole";
-            this.comboRole.Size = new System.Drawing.Size(193, 21);
+            this.comboRole.Size = new System.Drawing.Size(256, 24);
             this.comboRole.TabIndex = 8;
             this.comboRole.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(80, 310);
+            this.button8.Location = new System.Drawing.Point(107, 382);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(99, 23);
+            this.button8.Size = new System.Drawing.Size(132, 28);
             this.button8.TabIndex = 9;
             this.button8.Text = "<- BACK";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // UserView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.comboRole);
             this.Controls.Add(this.label1);
@@ -169,6 +180,7 @@
             this.Controls.Add(this.btnsub);
             this.Controls.Add(this.btnst);
             this.Controls.Add(this.butcs);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserView";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.UserView_Load);

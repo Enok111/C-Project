@@ -40,25 +40,13 @@ namespace Unicom_TIC_Managment_System.Veiw
             }
             else
             {
-                //username credentials = new Credentials();
-                //credentials.Username = username;
-                //credentials.Password = password;
-                //var result = _userController.Login(credentials);
-                //if (result)
-                //{
-                //    UserView userView = new UserView();
-                //    userView.Show();
-                //    this.Hide();
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Invalid username or password", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                //    // Optionally clear fields
-                //    userNameTxt.Clear();
-                //    userNameTxt.Focus();
-                //}
+                username = passwordTxt.Text;
+                password = validPassword;
+                MessageBox.Show("invalid password");
             }
+            
+             
+            
 
         }
 

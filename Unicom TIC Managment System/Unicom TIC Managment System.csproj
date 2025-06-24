@@ -57,6 +57,7 @@
     <Compile Include="Controller\MarkController.cs" />
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Controller\TimeTableController.cs" />
+    <Compile Include="Model\ComboBoxItem.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Exam.cs" />
     <Compile Include="Model\Marks.cs" />

@@ -8,151 +8,159 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Unicom_TIC_Managment_System.Model;
+using Unicom_TIC_Managment_System.Reposteries;
 
 namespace Unicom_TIC_Managment_System.Veiw
 {
     public partial class Examform : Form
     {
-        SQLiteConnection conn = new SQLiteConnection("Data Source=unicom.db;Version=3;");
-        SQLiteCommand cmd;
-        SQLiteDataAdapter adapter;
-        DataTable dt = new DataTable();
-
         public Examform()
         {
             InitializeComponent();
+        }
+
+        private void Exam_Load(object sender, EventArgs e)
+        {
             LoadSubjects();
             LoadExams();
 
         }
 
-        private void Examform_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        void LoadSubjects()
+        private void LoadSubjects()
         {
             comboSubject.Items.Clear();
-            conn.Open();
-            cmd = new SQLiteCommand("SELECT SubjectID FROM Subjects", conn); // Or load SubjectName if you prefer
-            SQLiteDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using (var conn = DbCon.GetConnection())
             {
-                comboSubject.Items.Add(reader["SubjectID"].ToString());
+                var cmd = new SQLiteCommand("SELECT SubjectID, SubjectName FROM Subjects", conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboSubject.Items.Add(new ComboBoxItem(reader["SubjectName"].ToString(), reader["SubjectID"].ToString()));
+                }
             }
-            conn.Close();
         }
 
-        void LoadExams()
+        private void LoadExams()
         {
-            dt.Clear();
-            conn.Open();
-            adapter = new SQLiteDataAdapter("SELECT * FROM Exams", conn);
-            adapter.Fill(dt);
-            dataGridView1.DataSource = dt;
-            conn.Close();
-
+            dgvExams.Rows.Clear();
+            using (var conn = DbCon.GetConnection())
+            {
+                var cmd = new SQLiteCommand(@"SELECT Exams.ExamID, Exams.ExamName, Subjects.SubjectName, Exams.ExamDate 
+                                              FROM Exams 
+                                              JOIN Subjects ON Exams.SubjectID = Subjects.SubjectID", conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    dgvExams.Rows.Add(
+                        reader["ExamID"],
+                        reader["ExamName"],
+                        reader["SubjectName"],
+                        reader["ExamDate"]
+                    );
+                }
+            }
         }
 
-        void ClearFields()
+        private void ClearFields()
         {
             txtExamName.Clear();
             comboSubject.SelectedIndex = -1;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (txtExamName.Text == "" || comboSubject.Text == "")
-            {
-                MessageBox.Show("Please fill all fields.");
-                return;
-            }
-
-            conn.Open();
-            cmd = new SQLiteCommand("INSERT INTO Exams(ExamName, SubjectID) VALUES (@Name, @SubjectID)", conn);
-            cmd.Parameters.AddWithValue("@Name", txtExamName.Text);
-            cmd.Parameters.AddWithValue("@SubjectID", comboSubject.Text);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Exam Added!");
-            LoadExams();
-            ClearFields();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Please select an exam to update.");
-                return;
-            }
-
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ExamID"].Value);
-            conn.Open();
-            cmd = new SQLiteCommand("UPDATE Exams SET ExamName=@Name, SubjectID=@SubjectID WHERE ExamID=@ID", conn);
-            cmd.Parameters.AddWithValue("@Name", txtExamName.Text);
-            cmd.Parameters.AddWithValue("@SubjectID", comboSubject.Text);
-            cmd.Parameters.AddWithValue("@ID", id);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Exam Updated!");
-            LoadExams();
-            ClearFields();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Please select an exam to delete.");
-                return;
-            }
-
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ExamID"].Value);
-            conn.Open();
-            cmd = new SQLiteCommand("DELETE FROM Exams WHERE ExamID=@ID", conn);
-            cmd.Parameters.AddWithValue("@ID", id);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Exam Deleted!");
-            LoadExams();
-            ClearFields();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                txtExamName.Text = row.Cells["ExamName"].Value.ToString();
-                comboSubject.Text = row.Cells["SubjectID"].Value.ToString();
-            }
+            dateExam.Value = DateTime.Today;
+            lblExamID.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide(); // hide the current ExamForm
-            UserView mainForm = new UserView(); // create instance of MainForm
-            mainForm.Show(); // show the main form again
+            if (txtExamName.Text.Trim() == "" || comboSubject.SelectedItem == null)
+            {
+                MessageBox.Show("Please enter exam name and select subject.");
+                return;
+            }
+
+            var subject = (ComboBoxItem)comboSubject.SelectedItem;
+            using (var conn = DbCon.GetConnection())
+            {
+                var cmd = new SQLiteCommand("INSERT INTO Exams (ExamName, SubjectID, ExamDate) VALUES (@name, @subjectId, @examDate)", conn);
+                cmd.Parameters.AddWithValue("@name", txtExamName.Text.Trim());
+                cmd.Parameters.AddWithValue("@subjectId", subject.Value);
+                cmd.Parameters.AddWithValue("@examDate", dateExam.Value.ToString("yyyy-MM-dd"));
+                cmd.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Exam added successfully.");
+            ClearFields();
+            LoadExams();
         }
 
-        private void comboSubject_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (lblExamID.Text == "") return;
 
+            var subject = (ComboBoxItem)comboSubject.SelectedItem;
+
+            using (var conn = DbCon.GetConnection())
+            {
+                var cmd = new SQLiteCommand("UPDATE Exams SET ExamName = @name, SubjectID = @subjectId, ExamDate = @examDate WHERE ExamID = @id", conn);
+                cmd.Parameters.AddWithValue("@name", txtExamName.Text.Trim());
+                cmd.Parameters.AddWithValue("@subjectId", subject.Value);
+                cmd.Parameters.AddWithValue("@examDate", dateExam.Value.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@id", lblExamID.Text);
+                cmd.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Exam updated.");
+            ClearFields();
+            LoadExams();
         }
 
-        private void comboSubject_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            if (lblExamID.Text == "") return;
 
+            var subject = (ComboBoxItem)comboSubject.SelectedItem;
+
+            using (var conn = DbCon.GetConnection())
+            {
+                var cmd = new SQLiteCommand("UPDATE Exams SET ExamName = @name, SubjectID = @subjectId, ExamDate = @examDate WHERE ExamID = @id", conn);
+                cmd.Parameters.AddWithValue("@name", txtExamName.Text.Trim());
+                cmd.Parameters.AddWithValue("@subjectId", subject.Value);
+                cmd.Parameters.AddWithValue("@examDate", dateExam.Value.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@id", lblExamID.Text);
+                cmd.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Exam updated.");
+            ClearFields();
+            LoadExams();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (lblExamID.Text == "") return;
+
+            using (var conn = DbCon.GetConnection())
+            {
+                var cmd = new SQLiteCommand("DELETE FROM Exams WHERE ExamID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", lblExamID.Text);
+                cmd.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Exam deleted.");
+            ClearFields();
+            LoadExams();
+        }
+
+        private void dgvExams_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = dgvExams.Rows[e.RowIndex];
+                lblExamID.Text = row.Cells[0].Value.ToString();
+                txtExamName.Text = row.Cells[1].Value.ToString();
+                comboSubject.Text = row.Cells[2].Value.ToString();
+                dateExam.Value = DateTime.Parse(row.Cells[3].Value.ToString());
+            }
         }
     }
 }
-
-

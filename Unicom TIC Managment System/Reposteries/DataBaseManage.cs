@@ -31,7 +31,9 @@ namespace Unicom_TIC_Managment_System.Reposteries
                 );
                 CREATE TABLE IF NOT EXISTS Subjects (
                     StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    SubjectID INTEGER NOT NULL,
                     SubjectName TEXT NOT NULL,
+                    ExamName TEXT NOT NULL,
                     Course TEXT,
                     FOREIGN KEY(Course) REFERENCES Courses
                 );
@@ -45,7 +47,9 @@ namespace Unicom_TIC_Managment_System.Reposteries
                     ExamID INTEGER PRIMARY KEY AUTOINCREMENT,
                     ExamName TEXT NOT NULL,
                     SubjectID INTEGER,
-                    FOREIGN KEY(SubjectID) REFERENCES Subjects
+                    ExamDate TEXT,
+                    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
+
                 );
                 CREATE TABLE IF NOT EXISTS Marks (
                     MarkID INTEGER PRIMARY KEY AUTOINCREMENT,

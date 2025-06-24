@@ -73,7 +73,7 @@ namespace Unicom_TIC_Managment_System.Veiw
             {
                 // Open Lecturer Panel
             }
-            else if (role == "Student") ;
+            else if (role == "Student")
 
             if (role == "Student")
             {
@@ -139,6 +139,13 @@ namespace Unicom_TIC_Managment_System.Veiw
                 LoginForm loginForm = new LoginForm(); // Replace with your actual login form class name
                 loginForm.Show();
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserView LoginForm = new UserView();
+            LoginForm.Show();
         }
     }
 }
